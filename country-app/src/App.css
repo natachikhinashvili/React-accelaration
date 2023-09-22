@@ -1,0 +1,19 @@
+
+ul {
+  list-style-type: none;
+  display:flex;
+  color:rgb(32, 32, 32)
+}
+
+/* Change the link color to #111 (black) on hover */
+li:hover {
+  background-color: azure;
+  cursor: pointer;
+}
+#country_info{
+  border-style: solid;
+  height: 30vh;
+  border: 2px solid;
+  border-color: grey;
+  width: 80vw;
+}
