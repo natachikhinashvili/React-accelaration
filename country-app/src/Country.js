@@ -1,5 +1,4 @@
 export default function Country(props){
-    console.log(props)
     return (
         <div>   
             <div id="header">

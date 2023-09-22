@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-export default function Airports(){
+export default function Airports(props){
     useEffect(() => {
-        const name = 'London Heathrow';
         const apiKey = 'h8uTWSA848mnRayxgmHnkw==FuGU6m718sK5w7xR';
 
         // Create the URL with query parameters
-        const apiUrl = `https://api.api-ninjas.com/v1/airports?name=${encodeURIComponent(name)}`;
+        console.log(props)
+        const apiUrl = `https://api.api-ninjas.com/v1/airports?name=${encodeURIComponent(props)}`;
     
         fetch(apiUrl, {
           method: 'GET',
