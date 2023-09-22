@@ -2,7 +2,10 @@
 ul {
   list-style-type: none;
   display:flex;
-  color:rgb(32, 32, 32)
+  color:rgb(32, 32, 32);
+  justify-content: space-around;
+  width: 20vw;
+
 }
 
 /* Change the link color to #111 (black) on hover */
@@ -10,10 +13,39 @@ li:hover {
   background-color: azure;
   cursor: pointer;
 }
+a{
+  text-decoration: none;
+  color: rgb(32, 32, 32)
+}
 #country_info{
   border-style: solid;
   height: 30vh;
   border: 2px solid;
   border-color: grey;
   width: 80vw;
+}
+#container{
+  width: 90vw;
+  border: 2px solid;
+  border-color: grey;
+  height: 40vh;
+  margin-top: 2vh;
+  padding: 3vh;
+  align-items:stretch;
+}
+.App{
+  display: flex;
+  justify-content: center;
+}
+#header{
+  display: flex;
+  flex-direction: row;
+}
+#content{
+  display: flex;
+  flex-direction: row;
+}
+#borders{
+  display: flex;
+  flex-direction: row;
 }
