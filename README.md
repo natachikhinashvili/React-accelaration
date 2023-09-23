@@ -2,4 +2,4 @@
 
 ## website look
 
-![website][./country-app/website.png]
+![website](./website.png)
