@@ -14,7 +14,7 @@ export default function Navigation(props){
     
     return <header>
         
-        <nav>
+        <nav id="navigation">
             <ul>
                 <li>
                     <Link to={`/${parameters}`}>CURRENCY EXCHANGE</Link>

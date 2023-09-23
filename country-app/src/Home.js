@@ -46,7 +46,7 @@ export default function Home(props){
     return (
       <div className="App">
         <div id='container'>
-        <select onChange={handleSelectChange}>
+        <select id="country-dropdown" onChange={handleSelectChange}>
           <option value="">Select a country</option> 
           {countries ? countries.map((country, index) => (
             <option key={index} value={index}>{country.name.common}

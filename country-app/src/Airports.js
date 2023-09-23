@@ -6,6 +6,7 @@ export default function Airports(props){
   const [airports, setAirports] = useState(false);
   const location = useLocation();
   const [searchResults, setSearchResults] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const handleSearch = (query) => {
     const filteredItems = airports.filter((item) => item.name.toLowerCase().includes(query.toLowerCase())
@@ -42,6 +43,7 @@ export default function Airports(props){
             console.log(data);
             setAirports(data);
             setSearchResults(data);
+            setLoading(false)
             // Handle the data here
           })      
           .catch((error) => {
@@ -55,7 +57,7 @@ export default function Airports(props){
               <SearchField onSearch={handleSearch} />
             </div>
           <div>
-            {
+            {loading ?  <p>Loading...</p> :
               searchResults && searchResults.map(element => (
                 <div>
                   <p>{element.iata} - {element.name}</p>

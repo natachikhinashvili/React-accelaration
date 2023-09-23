@@ -26,8 +26,6 @@ a{
 }
 #container{
   width: 90vw;
-  border: 2px solid;
-  border-color: grey;
   height: 40vh;
   margin-top: 2vh;
   padding: 3vh;
@@ -44,6 +42,9 @@ a{
 #content{
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content:space-evenly;
+  width: 80vw;
 }
 #borders{
   display: flex;
@@ -65,4 +66,18 @@ a{
   width: 50vw;
   height:5vh;
   margin: 1vw;
+}
+#country-dropdown{
+  width: 80vw;
+  height:7vh;
+  margin: 1vw;
+}
+#country-dropdown:hover{
+  cursor: pointer;
+}
+#border-container{
+  display: flex;
+}
+#navigation{
+  background-color: white;
 }

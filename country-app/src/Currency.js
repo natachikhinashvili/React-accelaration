@@ -6,7 +6,6 @@ export default function Currency(){
   const [to, setTo] = useState('');
   const [res, setres] = useState(0)
   const [amount, setAmount] = useState(0);
-  const [currency, setcurrency]= useState('');
   const location = useLocation();
   const pathSegments = location.pathname.split('/');
   const baseRoute = `${pathSegments[1]}`;
@@ -58,7 +57,7 @@ export default function Currency(){
             onChange={(e) => setAmount(e.target.value)}
           />
         </label>
-      <p>to {to} </p>      
+      <h1><b> = </b></h1>      
       <p>{res} {to}</p> 
     </div>
   );
