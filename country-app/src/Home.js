@@ -18,15 +18,14 @@ export default function Home(props){
 
   
     const handleSelectChange = (event) => {
-      setSelectedCountry(countries[ event.target.selectedIndex -1]);
-      navigate(`/${selectedCountry.cca2}`)
+        let index = event.target.selectedIndex -1;
+        setSelectedCountry(countries[index]);
     };
     
     useEffect(() => {
-
-        if(baseRoute !== "/undefined"){
-            setisRouted(true);
-        }
+        if (selectedCountry) {
+            navigate(`/${selectedCountry.cca2}`);
+          }
         fetch('https://restcountries.com/v3.1/all')
             .then(response => {
               if (!response.ok) {
@@ -35,13 +34,14 @@ export default function Home(props){
               return response.json();
             })
             .then(data => {
+                console.log(data)
               setCountres(data)
             })
             .catch(error => {
               console.error('Fetch error:', error);
             });
 
-        }, [])
+        }, [selectedCountry, navigate])
   
     return (
       <div className="App">
@@ -54,7 +54,7 @@ export default function Home(props){
           )): <p>Loading...</p>}
           </select>
           <div id='country_info'>
-            <Country/>
+            <Country props={selectedCountry}/>
           </div>
 
           <div>

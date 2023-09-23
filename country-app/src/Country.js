@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function Country(){
+export default function Country(props){
     const [countries, setCountries] = useState(false);
     const location = useLocation();
     const pathSegments = location.pathname.split('/');
     const baseRoute = `/${pathSegments[1]}`;
-
+    console.log(props)
     useEffect(() => {
           const apiKey = 'h8uTWSA848mnRayxgmHnkw==FuGU6m718sK5w7xR';
   
@@ -28,12 +28,12 @@ export default function Country(){
             })
             .then((data) => {
               setCountries(data[0]);
-              // Handle the data here
+              console.log(countries.capital)
             })      
             .catch((error) => {
               console.error('Fetch Error:', error);
             });        
-    },[])
+    },[location])
     return (
         <div>   
             {countries && (<>
