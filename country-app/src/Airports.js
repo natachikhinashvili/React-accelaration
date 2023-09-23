@@ -5,6 +5,7 @@ export default function Airports(props){
   const location = useLocation();
 
     useEffect(() => {
+      console.log('here')
       const pathSegments = location.pathname.split('/');
       const baseRoute = `/${pathSegments[1]}`;
       console.log(baseRoute)

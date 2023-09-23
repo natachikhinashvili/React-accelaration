@@ -1,15 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navigation(props){
+    const location = useLocation();
+    const pathSegments = location.pathname.split('/');
+    const baseRoute = `${pathSegments[1]}`;
+    let parameters = props.props;
+
+    if(!props.props){
+        parameters = baseRoute;
+    }else{
+        parameters = props.props.cca2
+    }
+    
     return <header>
         
         <nav>
             <ul>
                 <li>
-                    <Link to={`/${props.props.cca2}`}>CURRENCY EXCHANGE</Link>
+                    <Link to={`/${parameters}`}>CURRENCY EXCHANGE</Link>
                 </li>
                 <li>
-                    <Link to={`/${props.props.cca2}/airports`}>AIRPORTS</Link>
+                    <Link to={`/${parameters}/airports`}>AIRPORTS</Link>
                 </li>
             </ul>
         </nav>

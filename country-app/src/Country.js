@@ -4,11 +4,10 @@ import { useLocation } from "react-router-dom";
 export default function Country(){
     const [countries, setCountries] = useState(false);
     const location = useLocation();
+    const pathSegments = location.pathname.split('/');
+    const baseRoute = `/${pathSegments[1]}`;
 
     useEffect(() => {
-        const pathSegments = location.pathname.split('/');
-        const baseRoute = `/${pathSegments[1]}`;
-        console.log(baseRoute)
           const apiKey = 'h8uTWSA848mnRayxgmHnkw==FuGU6m718sK5w7xR';
   
           // Create the URL with query parameters
