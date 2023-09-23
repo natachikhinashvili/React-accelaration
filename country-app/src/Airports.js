@@ -41,7 +41,7 @@ export default function Airports(props){
           .then((data) => {
             console.log(data);
             setAirports(data);
-            setSearchResults(airports);
+            setSearchResults(data);
             // Handle the data here
           })      
           .catch((error) => {
