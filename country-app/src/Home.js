@@ -11,6 +11,7 @@ export default function Home(props){
     const [selectedCountry, setSelectedCountry] = useState(false);
     const [isrouted, setisRouted] =useState(false);
     const navigate = useNavigate();
+    const [error, setError] = useState('')
     const location = useLocation();
     const pathSegments = location.pathname.split('/');
     const baseRoute = `/${pathSegments[1]}`;
@@ -23,6 +24,35 @@ export default function Home(props){
     };
     
     useEffect(() => {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude}, ${longitude}&key=AIzaSyBNfH4PIY_0Y6V2um4hqf9eilqjD5pqakI`)
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  if(data.status != "REQUEST_DENIED"){
+                    setSelectedCountry(data);
+                  }else{
+                    setError(data);
+                  }
+                })
+                .catch(error => {
+                  console.error('Fetch error:', error);
+                });
+          },
+          (error) => {
+            setError(error);
+          }
+        );
+      } else {
+        setError('Geolocation is not available in this browser.');
+      }
         if (selectedCountry) {
             navigate(`/${selectedCountry.cca2}`);
           }
