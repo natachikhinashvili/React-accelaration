@@ -10,6 +10,7 @@ export default function Currency(){
   const location = useLocation();
   const pathSegments = location.pathname.split('/');
   const baseRoute = `${pathSegments[1]}`;
+  const [countries, setCountres] = useState(false);
 
   async function getConvertedData(){
     const API_URL = `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`;
@@ -27,26 +28,38 @@ export default function Currency(){
       return response.json();
     })
     .then(data => {
+      setCountres(data);
        data.map((element) => element.cca2 == baseRoute && setTo(Object.keys(element.currencies)[0]));
     })
     .catch(error => {
       console.error('Fetch error:', error);
     });
   }, [baseRoute]);
+  function handleSelectChange(e){
+    let curr = Object.keys(countries[e.target.value].currencies)[0];
+    setTo(curr);
+  }
 
   return (
     <div id='currency-container'>
       <h1>Currency Exchange</h1>
+      <select id="selectcurr" onChange={(e) => handleSelectChange(e)}>
+          <option value="">Select a country</option> 
+          {countries ? countries.map((country, index) => (
+              <option key={index} value={index}>{country.name.common}
+              </option>
+          )): <p>Loading...</p>}
+          </select>
       <label>
-          from $:
+          from USD:
           <input
             type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />
         </label>
-        <label>to:
-      <input value={to} onChange={(e) => setTo(e.target.value)}/></label>      <p>{res} {to}</p> 
+      <p>to {to} </p>      
+      <p>{res} {to}</p> 
     </div>
   );
 };
