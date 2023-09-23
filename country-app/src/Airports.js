@@ -1,11 +1,21 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import SearchField from './SearchField';
+
 export default function Airports(props){
   const [airports, setAirports] = useState(false);
   const location = useLocation();
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearch = (query) => {
+    const filteredItems = airports.filter((item) => item.name.toLowerCase().includes(query.toLowerCase())
+  );
+    setTimeout(() => {
+      setSearchResults(filteredItems);
+    }, 500);
+  };
 
     useEffect(() => {
-      console.log('here')
       const pathSegments = location.pathname.split('/');
       const baseRoute = `/${pathSegments[1]}`;
       console.log(baseRoute)
@@ -34,19 +44,23 @@ export default function Airports(props){
           })      
           .catch((error) => {
             console.error('Fetch Error:', error);
-          });
+          });    
       }, []);
     return (
         <div id="airports-container">
-          <h1>Airports</h1>
+          <div>
+              <h1>Search App</h1>
+              <SearchField onSearch={handleSearch} />
+            </div>
           <div>
             {
-              airports && airports.map(element => (
+              searchResults && searchResults.map(element => (
                 <div>
                   <p>{element.iata} - {element.name}</p>
                 </div>
               ))
             }
+            {searchResults && searchResults.length == 0 && <p style={{color: 'red'}}>There are no airports found 😟</p>}
           </div>
         </div>
     )
