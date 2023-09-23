@@ -23,7 +23,6 @@ export default function Airports(props){
       console.log(baseRoute)
         const apiKey = 'h8uTWSA848mnRayxgmHnkw==FuGU6m718sK5w7xR';
 
-        // Create the URL with query parameters
         const apiUrl = `https://api.api-ninjas.com/v1/airports?country=${baseRoute.substring(1)}`;
     
         fetch(apiUrl, {
@@ -44,7 +43,6 @@ export default function Airports(props){
             setAirports(data);
             setSearchResults(data);
             setLoading(false)
-            // Handle the data here
           })      
           .catch((error) => {
             console.error('Fetch Error:', error);
@@ -53,7 +51,7 @@ export default function Airports(props){
     return (
         <div id="airports-container">
           <div>
-              <h1>Search App</h1>
+              <h1>Airports</h1>
               <SearchField onSearch={handleSearch} />
             </div>
           <div>

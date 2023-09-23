@@ -49,8 +49,9 @@ export default function Currency(){
               </option>
           )): <p>Loading...</p>}
           </select>
+          <footer id="currencyfooter">
       <label>
-          from USD:
+          USD:
           <input
             type="number"
             value={amount}
@@ -59,6 +60,7 @@ export default function Currency(){
         </label>
       <h1><b> = </b></h1>      
       <p>{res} {to}</p> 
+      </footer>
     </div>
   );
 };

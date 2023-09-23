@@ -35,11 +35,11 @@ export default function Country(props){
             });        
     },[location])
     return (
-        <div>   
+        <div id="country-container">   
             {countries && (<>
              <div id="header">
             <h1>{countries.name.common}</h1>
-            <h2>{countries.flag}</h2>
+            <h2 id="flagid">{countries.flag}</h2>
             </div>
             <div id="content">
                 <div>
