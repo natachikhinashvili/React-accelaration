@@ -45,6 +45,7 @@ export default function Country(props){
                 <div>
                     <p><b>Capital: </b>{countries.capital[0]}</p>
                     <p><b>Continent: </b>{countries.continents[0]}</p>
+                    <p><b>Currencies: </b>{Object.keys(countries.currencies)[0]}</p>
                 </div>
                 <div>
                     <p><b>Population: </b>{countries.population}</p>
