@@ -58,7 +58,7 @@ export default function Airports(props){
             {loading ?  <p>Loading...</p> :
               searchResults && searchResults.map(element => (
                 <div>
-                  <p>{element.iata} - {element.name}</p>
+                  {element.iata && <p>{element.iata} - {element.name} ({element.city})</p>}
                 </div>
               ))
             }
