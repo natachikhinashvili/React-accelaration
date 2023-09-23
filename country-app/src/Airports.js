@@ -16,6 +16,7 @@ export default function Airports(props){
   };
 
     useEffect(() => {
+
       const pathSegments = location.pathname.split('/');
       const baseRoute = `/${pathSegments[1]}`;
       console.log(baseRoute)
@@ -40,6 +41,7 @@ export default function Airports(props){
           .then((data) => {
             console.log(data);
             setAirports(data);
+            setSearchResults(airports);
             // Handle the data here
           })      
           .catch((error) => {
