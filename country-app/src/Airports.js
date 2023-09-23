@@ -1,11 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 export default function Airports(props){
+  const [airports, setAirports] = useState(false);
+  const location = useLocation();
+
     useEffect(() => {
+      const pathSegments = location.pathname.split('/');
+      const baseRoute = `/${pathSegments[1]}`;
+      console.log(baseRoute)
         const apiKey = 'h8uTWSA848mnRayxgmHnkw==FuGU6m718sK5w7xR';
 
         // Create the URL with query parameters
-        console.log(props)
-        const apiUrl = `https://api.api-ninjas.com/v1/airports?name=${encodeURIComponent(props)}`;
+        const apiUrl = `https://api.api-ninjas.com/v1/airports?country=${baseRoute.substring(1)}`;
     
         fetch(apiUrl, {
           method: 'GET',
@@ -22,6 +28,7 @@ export default function Airports(props){
           })
           .then((data) => {
             console.log(data);
+            setAirports(data);
             // Handle the data here
           })      
           .catch((error) => {
@@ -31,6 +38,15 @@ export default function Airports(props){
     return (
         <div id="airports-container">
           <h1>Airports</h1>
+          <div>
+            {
+              airports && airports.map(element => (
+                <div>
+                  <p><b>{element.iata}</b> - {element.name}</p>
+                </div>
+              ))
+            }
+          </div>
         </div>
     )
 }
