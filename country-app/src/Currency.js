@@ -38,15 +38,15 @@ export default function Currency(){
     <div id='currency-container'>
       <h1>Currency Exchange</h1>
       <label>
-          Amount:
+          from $:
           <input
             type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />
         </label>
-      <input value={to} onChange={(e) => setTo(e.target.value)}/>
-      <p>{res}</p>
+        <label>to:
+      <input value={to} onChange={(e) => setTo(e.target.value)}/></label>      <p>{res} {to}</p> 
     </div>
   );
 };
