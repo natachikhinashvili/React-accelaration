@@ -4,21 +4,21 @@ import Country from './Country';
 import Currency from './Currency';
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import Home from "./Home";
-import { useState } from "react"
 
-const router = createBrowserRouter([
-  { 
-    path: '/', 
-    element: <Home/>,
-    children: [
-      {path: "/", element: <Currency />},
-      {path:"/airports", element: <Airports />},
-    ]
-},
-
-])
 
 function App() {
+  
+  const router = createBrowserRouter([
+    { 
+      path: '/', 
+      element: <Home/>,
+      children: [
+        {path: "/:countrycode", element: <Currency />},
+        {path:"/:countrycode/airports", element: <Airports />},
+      ]
+  },
+  
+  ])
   return <RouterProvider router={router}/>;
 }
 

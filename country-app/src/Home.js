@@ -44,7 +44,7 @@ export default function Home(){
             {selectedCountry && <Country country={selectedCountry}/>}
           </div>
           <div>
-            <Navigation/>
+            {selectedCountry &&<Navigation props={selectedCountry}/>}
             <Outlet/>
           </div>
         </div>
