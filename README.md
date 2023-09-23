@@ -17,3 +17,9 @@
 - [x] 3. ქვეყნის არჩევის შემდეგ აპლიკაციაში უნდა გამოჩნდეს შემდეგი 2 გვერდი: "Currency Exchange" და "Airports".
     - Currency Exchange: მომხმარებელს უნდა შეეძლოს დანიშნულების ქვეყნის (ქვეყანა, რომლის ვალუტაშიც უნდა გადავიყვანოთ თანხა) არჩევა და თანხის შეყვანა, რის შემდეგაც სისტემამ უნდა დააკონვერტიროს თანხა შესაბამისი ქვეყნის ვალუტაში. (currency API)
     - Airports: შესაბამის გვერდზე გადასვლისას მომხმარებელმა უნდა დაინახოს არჩეულ ქვეყანაში არსებული აეროპორტები. ასევე, ამ გვერდზე უნდა იყოს ძებნის ველი. API მოთხოვნები უნდა გაიგზავნოს ველში ინფორმაციის შეყვანისას, თუმცა გაითვალისწინეთ, რომ API მოთხოვნა გააგზავნოთ მხოლოდ მაშინ, თუ ბოლო სიმბოლოს შეყვანის შემდეგ გავიდა 500 მილიწამი. 
+
+## APIs
+1. Google geocoding API - https://developers.google.com/maps/documentation/geocoding/requests-reverse-geocoding
+2. Countries API: https://restcountries.com/
+3. Currency API - https://exchangerate.host/
+4. Airports API - https://api-ninjas.com/api/airports
