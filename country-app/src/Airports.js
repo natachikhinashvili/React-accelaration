@@ -5,7 +5,7 @@ import SearchField from './SearchField';
 export default function Airports(props){
   const [airports, setAirports] = useState(false);
   const location = useLocation();
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState(null);
 
   const handleSearch = (query) => {
     const filteredItems = airports.filter((item) => item.name.toLowerCase().includes(query.toLowerCase())
