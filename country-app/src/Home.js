@@ -1,20 +1,15 @@
 import { useEffect, useState } from 'react';
 import Navigation from './Navigation';
 import Country from "./Country";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Outlet } from 'react-router-dom';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 export default function Home(props){
     const [countries, setCountres] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState(false);
-    const [isrouted, setisRouted] =useState(false);
     const navigate = useNavigate();
     const [error, setError] = useState('')
-    const location = useLocation();
-    const pathSegments = location.pathname.split('/');
-    const baseRoute = `/${pathSegments[1]}`;
 
 
   

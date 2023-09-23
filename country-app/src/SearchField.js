@@ -22,6 +22,7 @@ function SearchField({ onSearch }) {
 
   return (
     <input
+      id='searchfield'
       type="text"
       placeholder="Search..."
       value={query}
