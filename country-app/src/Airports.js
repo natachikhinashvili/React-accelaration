@@ -42,7 +42,7 @@ export default function Airports(props){
             {
               airports && airports.map(element => (
                 <div>
-                  <p><b>{element.iata}</b> - {element.name}</p>
+                  <p>{element.iata} - {element.name}</p>
                 </div>
               ))
             }

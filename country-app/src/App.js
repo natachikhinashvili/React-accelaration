@@ -15,7 +15,7 @@ function App() {
       children: [
         {path: "/:countrycode", element: <Currency />},
         {path:"/:countrycode/airports", element: <Airports />},
-      ]
+      ],
   },
   
   ])
