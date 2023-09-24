@@ -4,42 +4,49 @@ import Country from "./Country";
 import { useNavigate } from "react-router-dom";
 import { Outlet } from 'react-router-dom';
 import * as React from 'react';
+import { useRef } from 'react';
 
 export default function Home(props){
     const [countries, setCountres] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState(false);
     const navigate = useNavigate();
     const [error, setError] = useState('')
-
-
+    const cache = useRef({})
   
     const handleSelectChange = (event) => {
         let index = event.target.selectedIndex -1;
         setSelectedCountry(countries[index]);
     };
-    
     useEffect(() => {
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
-            fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude}, ${longitude}&key=AIzaSyBNfH4PIY_0Y6V2um4hqf9eilqjD5pqakI`)
-                .then(response => {
-                  if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                  }
-                  return response.json();
-                })
-                .then(data => {
-                  if(data.status != "REQUEST_DENIED"){
-                    setSelectedCountry(data);
-                  }else{
-                    setError(data);
-                  }
-                })
-                .catch(error => {
-                  console.error('Fetch error:', error);
-                });
+            const cacheKey = `${latitude}-${longitude}`;
+          // Check if the response is cached
+          if (cache.current[cacheKey]) {
+            setSelectedCountry(cache.current[cacheKey]);
+          } else {
+            fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyBI5ZsMHPmb2o1SESN22PJi_Dqaba6CeYY`)
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                return response.json();
+              })
+              .then(data => {
+                if (data.status !== "REQUEST_DENIED") {
+                  console.log(data);
+                  setSelectedCountry(data);
+                  cache.current[cacheKey] = data; // Cache the response
+                } else {
+                  setError(data);
+                }
+              })
+              .catch(error => {
+                console.error('Fetch error:', error);
+              })
+            };
           },
           (error) => {
             setError(error);
