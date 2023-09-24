@@ -59,7 +59,6 @@ export default function Home(props){
               return response.json();
             })
             .then(data => {
-                console.log(data)
               setCountres(data)
             })
             .catch(error => {

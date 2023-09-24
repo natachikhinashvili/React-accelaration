@@ -20,7 +20,6 @@ export default function Airports(props){
 
       const pathSegments = location.pathname.split('/');
       const baseRoute = `/${pathSegments[1]}`;
-      console.log(baseRoute)
         const apiKey = 'h8uTWSA848mnRayxgmHnkw==FuGU6m718sK5w7xR';
 
         const apiUrl = `https://api.api-ninjas.com/v1/airports?country=${baseRoute.substring(1)}`;
@@ -39,7 +38,6 @@ export default function Airports(props){
             return response.json();
           })
           .then((data) => {
-            console.log(data);
             setAirports(data);
             setSearchResults(data);
             setLoading(false)

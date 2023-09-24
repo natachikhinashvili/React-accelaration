@@ -6,7 +6,7 @@ export default function Country(props){
     const location = useLocation();
     const pathSegments = location.pathname.split('/');
     const baseRoute = `/${pathSegments[1]}`;
-    console.log(props)
+    
     useEffect(() => {
           const apiKey = 'h8uTWSA848mnRayxgmHnkw==FuGU6m718sK5w7xR';
   
@@ -28,7 +28,6 @@ export default function Country(props){
             })
             .then((data) => {
               setCountries(data[0]);
-              console.log(countries.capital)
             })      
             .catch((error) => {
               console.error('Fetch Error:', error);
